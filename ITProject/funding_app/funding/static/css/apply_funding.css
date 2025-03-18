@@ -1,0 +1,76 @@
+    :root {
+        --primary: #3b82f6;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --dark-bg: #1e1e2e;
+        --dark-surface: #2e2e3e;
+        --dark-border: #444;
+    }
+
+    body {
+        background: #f8fafc;
+        font-family: 'Inter', system-ui, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 现代化导航栏 */
+    .navbar {
+        background: rgba(30, 41, 59, 0.95);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* 申请表单卡片 */
+    .application-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        padding: 2rem;
+        margin: 2rem 0;
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* 表单输入优化 */
+    .form-control {
+        padding: 0.875rem 1.25rem;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    /* 提交按钮增强 */
+    .btn-primary {
+        background: var(--primary);
+        padding: 0.875rem 1.75rem;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: transform 0.2s ease, background 0.3s;
+    }
+
+    .btn-primary:hover {
+        transform: scale(1.03);
+        background: #2563eb;
+    }
+
+    /* 未登录状态提示 */
+    .auth-prompt {
+        background: rgba(255,255,255,0.95);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    /* 淡入动画 */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }

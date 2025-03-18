@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Submitted | FundFlow</title>
+
+    <!-- 引入外部 CSS -->
+    <link rel="stylesheet" href="{% static 'css/funding_success.css' %}">
+</head>
+<body>
+    <div class="success-card">
+        <h2>Application Submitted!</h2>
+        <p>Your funding request has been successfully received. Our team will review your application and respond within 3-5 business days.</p>
+        
+        <div class="action-links">
+            <a href="{% url 'apply_funding' %}" class="action-btn primary-btn">
+                ✨ Submit Another
+            </a>
+            <a href="{% url 'view_applications' %}" class="action-btn secondary-btn">
+                📋 View Applications
+            </a>
+        </div>
+    </div>
+
+    <!-- 引入外部 JS -->
+    <script src="{% static 'js/funding_success.js' %}"></script>
+</body>
+</html>
