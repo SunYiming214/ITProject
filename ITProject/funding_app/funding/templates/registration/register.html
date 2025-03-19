@@ -148,10 +148,14 @@
             event.preventDefault();  // 阻止默认提交
 
             let formData = new FormData(this);  // 获取表单数据
+            let csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;  // 获取 CSRF 令牌
 
-            fetch("{% url 'register' %}", {  // Django 注册视图 URL
+            fetch("{% url 'register' %}", {
                 method: "POST",
                 body: formData,
+                headers: {
+                    "X-CSRFToken": csrfToken  // 传递 CSRF 令牌
+                }
             })
             .then(response => response.json())
             .then(data => {
@@ -159,7 +163,7 @@
                     alert("Registered successfully! Going to the login page...");
                     window.location.href = "{% url 'login' %}";  // 成功后跳转
                 } else {
-                    alert("Registration failed, please check the input!");
+                    alert("Registration failed! " + JSON.stringify(data.errors));  // 显示后端错误
                 }
             })
             .catch(error => {
