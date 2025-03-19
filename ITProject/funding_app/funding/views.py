@@ -81,7 +81,20 @@ def approve_or_reject(request, application_id):
 
 @login_required
 def dashboard(request):
-    return render(request, "funding/dashboard.html")
+    applications = FundingApplication.objects.filter(user=request.user) 
+
+    total_applications = applications.count()
+    approved_count = applications.filter(status="approved").count()
+    rejected_count = applications.filter(status="rejected").count()
+    pending_count = applications.filter(status="pending").count()
+
+    return render(request, "funding/dashboard.html", {
+        "applications": applications,
+        "total_applications": total_applications,
+        "approved_count": approved_count,
+        "rejected_count": rejected_count,
+        "pending_count": pending_count,
+    })
 
 @login_required
 def user_settings(request):
